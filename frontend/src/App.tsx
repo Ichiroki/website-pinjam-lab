@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom"
-import Dosen from "./pages/Dosen"
 import Home from "./pages/Home"
-import Mahasiswa from "./pages/Mahasiswa"
+import FormPeminjaman from "./pages/FormPeminjaman"
 
 function App(){
   return (
@@ -9,8 +8,7 @@ function App(){
       <main className="baseplate">
           <Routes>
               <Route path="/" element={<Home/>}></Route>
-              <Route path="/dosen/:token" element={<Dosen/>}></Route>
-              <Route path="/mahasiswa/:token" element={<Mahasiswa/>}></Route>
+              <Route path="/form-pendaftaran" element={<FormPeminjaman />}></Route>
           </Routes>
       </main>
     </>

@@ -32,10 +32,11 @@
     justify-content: center;
     gap: 10px;
 
-    a {
+    button {
       padding: 10px;
       width: 150px;
       text-align: center;
+      cursor: pointer;
     }
   }
 }
