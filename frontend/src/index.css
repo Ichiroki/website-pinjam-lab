@@ -41,12 +41,38 @@
   }
 }
 
-.dosen,
-.mahasiswa {
+.form-peminjaman {
   background: #333 url('./bg.jpg');
   height: 100vh;
 
   background-blend-mode: multiply;
   background-position: center center;
   background-size: cover;
+  
+  form {
+    background: #444;
+    padding: 25px 40px; 
+    border-radius: 5px;
+  }
+
+  input, textarea {
+    padding: 10px;
+    border-radius: 5px;
+    color: #eee;
+    outline: none;
+    border: none;
+    box-shadow: #eee 0 0 0 2px;
+    transition: all .15s ease-in-out;
+  
+    &:focus {
+      border: none;
+      box-shadow: cyan 0 0 0 5px;
+    }
+  }
+  
+  .form-submit {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
 }

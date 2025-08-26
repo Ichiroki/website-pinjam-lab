@@ -8,7 +8,7 @@ function App(){
       <main className="baseplate">
           <Routes>
               <Route path="/" element={<Home/>}></Route>
-              <Route path="/form-pendaftaran" element={<FormPeminjaman />}></Route>
+              <Route path="/form-peminjaman" element={<FormPeminjaman />}></Route>
           </Routes>
       </main>
     </>

@@ -7,7 +7,6 @@ interface QrCodeParamsType {
 
 function QrCode({token, role}: QrCodeParamsType) {
     let link = "https://facebook.com/fahrezi.rizqiawan"
-
     return (
         <>
             <div>
@@ -16,6 +15,7 @@ function QrCode({token, role}: QrCodeParamsType) {
                 value={link} 
                 size={300}
                 />
+                <p>{`${token}` + ` ${role}`}</p>
             </div>
         </>
     );
