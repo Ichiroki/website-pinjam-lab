@@ -39,10 +39,42 @@ WebRoutes.post("/api/generate-token", async (req, res) => {
     }
 })
 
-WebRoutes.get('/api/validate-token', async (req, res) => {
-    const token = req.query.token
+WebRoutes.get("/api/validate-token", async (req, res) => {
+  try {
+    const { token } = req.query;
+    if (!token) {
+      return res.status(400).json({ valid: false, message: "Token tidak diberikan" });
+    }
 
-    const record = await db.token_links.findUnique()
-})
+    const { data, error } = await db
+      .from("temporary_links")
+      .select("expires_at, role")
+      .eq("token", token)
+      .maybeSingle(); // ambil 1 record saja
+
+    if (error) {
+      return res.status(500).json({ valid: false, message: error.message });
+    }
+
+    if (!data) {
+      return res.json({ valid: false, message: "Token tidak ditemukan" });
+    }
+
+    // cek expired
+    if (new Date(data.expires_at) < new Date()) {
+      return res.json({ valid: false, message: "Token sudah kadaluarsa" });
+    }
+
+    return res.json({
+      valid: true,
+      role: data.role,
+      expires_at: data.expires_at,
+      message: "Token masih valid"
+    });
+  } catch (err) {
+    return res.status(500).json({ valid: false, message: err.message });
+  }
+});
+
 
 export default WebRoutes

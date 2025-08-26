@@ -1,0 +1,9 @@
+[build]
+  builder = "NIXPACKS"
+
+[build.env]
+  NODE_ENV = "production"
+
+[deploy]
+  rootDirectory = "backend"
+  startCommand = "npm start"
