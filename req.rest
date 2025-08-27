@@ -1,1 +1,14 @@
 POST http://website-pinjam-lab-production.up.railway.app/api/generate-token?role=mahasiswa
+
+###
+
+POST http://localhost:3000/api/submit-loan
+
+{
+    "nama" : "Fahrezi Rizqiawan",
+    "nomor_hp": "089662690020",
+    "npm_nidn": "201552020008",
+    "tanggal" : "27 Agustus 2025",
+    "jam": "17.19",
+    "keperluan": "Praktek komputer",
+}

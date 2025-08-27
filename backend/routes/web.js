@@ -77,5 +77,68 @@ WebRoutes.get("/api/validate-token", async (req, res) => {
   }
 });
 
+WebRoutes.post('/api/peminjaman', async (req, res) => {
+  console.log(process.env.TELEGRAM_BOT_TOKEN)
+
+  const {
+    nama,
+    nomor_hp,
+    npm_nidn,
+    tanggal,
+    jam,
+    keperluan,
+    role,
+    token
+  } = req.body
+
+  const datetime = new Date(`${tanggal}T${jam}:00+07:00`)
+
+  const {error} = await db
+  .from("peminjaman")
+  .insert({
+    name: nama,
+    nomor: nomor_hp,
+    token_id: token,
+    nim_nidn: npm_nidn,
+    role,
+    tanggal,
+    jam: datetime.toISOString(),
+    keperluan,
+  })
+
+  if(error) return res.status(500).json({ message: error })
+
+  const userchat = await fetch('https://api.telegram.org/bot'+ process.env.TELEGRAM_BOT_TOKEN +'/getUpdates', {
+    method: "GET",
+  })
+
+  const userchatData = await userchat.json()
+  
+  const chatId = userchatData.result[0].message.chat.id
+  console.log(chatId)
+  const text = `
+    📌 *Peminjaman Lab Berhasil*
+    👤 Nama: ${nama}
+    📞 Nomor: ${nomor_hp}
+    🆔 NIM/NIDN: ${npm_nidn}
+    📅 Tanggal: ${tanggal}
+    ⏰ Jam: ${jam}
+    🎯 Keperluan: ${keperluan}
+  `;
+
+  const test = await fetch('https://api.telegram.org/bot8429336561:AAEeEPdRGxn4qVs0zPhIYbmO56ONI30GyPg/sendMessage', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text,
+      parse_mode: "Markdown"
+    })
+  })
+
+  // const data = await test.json()
+
+  res.json({ message: "Form berhasil dibuat", chat: chatId })
+})
 
 export default WebRoutes
