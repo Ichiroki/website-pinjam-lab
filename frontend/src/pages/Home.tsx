@@ -5,7 +5,7 @@ import QrCode from "../components/QRCode";
 interface PayloadDataType {
     token: string
     role: string
-}[]
+}
 
 function Home() {
     const [payloadData, setPayloadData] = useState<PayloadDataType>()
@@ -20,6 +20,8 @@ function Home() {
             console.log(e)
         }
     }
+
+    console.log(payloadData)
 
     return (
         <>

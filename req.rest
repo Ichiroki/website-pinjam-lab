@@ -1,2 +1,1 @@
-# POST http://localhost:3000/api/generate-token?role=mahasiswa
 POST http://website-pinjam-lab-production.up.railway.app/api/generate-token?role=mahasiswa
