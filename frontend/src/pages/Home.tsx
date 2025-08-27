@@ -12,7 +12,8 @@ function Home() {
 
     const generateToken = async (role: string) => {
         try {
-            const response = await axios.post(`http://localhost:3000/api/generate-token?role=${role}`)
+            // const response = await axios.post(`http://localhost:3000/api/generate-token?role=${role}`)
+            const response = await axios.post(`https://website-pinjam-lab-production.up.railway.app/api/generate-token?role=${role}`)
             const data = response.data
             setPayloadData(data)
         } catch(e) {
