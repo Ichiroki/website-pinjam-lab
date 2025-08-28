@@ -1,8 +1,8 @@
-POST http://website-pinjam-lab-production.up.railway.app/api/generate-token?role=mahasiswa
+POST http://localhost:3000/api/generate-token?role=mahasiswa
 
 ###
 
-POST http://localhost:3000/api/submit-loan
+POST https://website-pinjam-lab.netlify.app/api/submit-loan
 
 {
     "nama" : "Fahrezi Rizqiawan",
@@ -12,3 +12,7 @@ POST http://localhost:3000/api/submit-loan
     "jam": "17.19",
     "keperluan": "Praktek komputer",
 }
+
+###
+
+GET http://website-pinjam-lab-production.up.railway.app/api/validate-token?token=9c128551-fb4a-4481-b9a6-5ad6697e2834

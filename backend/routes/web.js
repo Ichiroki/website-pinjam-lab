@@ -78,8 +78,6 @@ WebRoutes.get("/api/validate-token", async (req, res) => {
 });
 
 WebRoutes.post('/api/peminjaman', async (req, res) => {
-  console.log(process.env.TELEGRAM_BOT_TOKEN)
-
   const {
     nama,
     nomor_hp,

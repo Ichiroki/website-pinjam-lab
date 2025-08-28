@@ -21,7 +21,7 @@ function FormPeminjaman() {
   const validateToken = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/api/validate-token?token=${token}`
+        `https://website-pinjam-lab-production.up.railway.app/api/validate-token?token=${token}`
       );
       setValid(res.data.valid);
     } catch (err) {
@@ -40,20 +40,19 @@ function FormPeminjaman() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/peminjaman", {
+      const res = await axios.post("https://website-pinjam-lab-production.up.railway.app/api/peminjaman", {
         ...form,
         role,
         token,
       });
-      // const res = await axios.post("http://localhost:3000/api/peminjaman");
       alert(res.data.message);
     } catch (err: any) {
       alert(err.response?.data?.message || "Terjadi error");
     }
   };
 
-  // if (loading) return <p>Memeriksa token...</p>;
-  // if (!valid) return <p>Link tidak valid atau kadaluarsa</p>;
+  if (loading) return <p>Memeriksa token...</p>;
+  if (!valid) return <p>Link tidak valid atau kadaluarsa</p>;
 
   return (
     <div className="form-peminjaman h-screen flex items-center justify-center">

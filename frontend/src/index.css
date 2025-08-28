@@ -76,3 +76,25 @@
     cursor: pointer;
   }
 }
+
+.modal-background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,.4);
+}
+
+.modal {
+  z-index: 3;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #222;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
